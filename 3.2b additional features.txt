@@ -1,0 +1,6 @@
+Video link = https://stream.nyu.edu/media/3.2a+tutorial+of+my+finstagram/0_ov4ic32f
+
+Extra Features: 
+1. Add comments
+2. Like photo
+

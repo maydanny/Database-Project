@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+Post Wall
+
+<table>
+	<th>PhotoID</th>
+	<th>Poster</th>
+	<th>Posting Date</th>
+	<th>Filepath</th>
+	<th>Followers</th>
+	<th>caption</th>
+
+{% for line in posts %}
+	<tr>
+		<td>{{line.ID}}</td>
+		<td>{{line.photoOwner}}</td>
+		<td>{{line.postingDate}}</td>
+		<td>{{line.filePath}}</td>
+		<td>{{line.allFollowers}}</td>
+		<td>{{line.caption}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+
+
+<br>
+<a href="/">Go back</a>
+
+</body>
+
+
+</html>

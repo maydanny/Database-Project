@@ -1,0 +1,48 @@
+<html>
+<head>
+</head>
+<body>
+
+<form action="/show_postsAuth" method="POST">
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+Here are posts by {{poster_name}}:
+
+<table>
+	<th>PhotoID</th>
+	<th>Poster</th>
+	<th>Posting Date</th>
+	<th>caption</th>
+
+{% for line in posts %}
+	<tr>
+		<td>{{line.ID}}</td>
+		<td>{{line.photoOwner}}</td>
+		<td>{{line.postingDate}}</td>
+		<td>{{line.caption}}</td>
+	</tr>
+{% endfor %}
+</table>
+	
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+<form>
+
+
+<br>
+<br>
+<a href="/select_blogger">Go Back Public</a>
+<br>
+<a href="/home">Home</a>
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

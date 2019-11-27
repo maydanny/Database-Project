@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+Here are posts by {{groupName}}:
+
+<table>
+	<th>Time</th>
+	<th>Post</th>
+	<th>Likes</th>
+	<th>Comments</th>
+
+{% for line in posts %}
+	<tr>
+		<td>{{line.ts}}</td>
+		<td>{{line.blog_post}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<br>
+<br>
+<a href="/select_blogger">Other Joined Groups</a>
+<br>
+<a href="/home">My Posting</a>
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

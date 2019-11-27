@@ -1,0 +1,9 @@
+SELECT ID
+FROM photo AS p JOIN follow AS f ON (photoOwner = followerUsername) 
+WHERE followingUsername = "TestUser" AND allFollowers = 1 AND followStatus = 1
+UNION
+SELECT p.ID
+FROM photo AS p JOIN sharewith AS s ON (p.ID = s.ID)
+JOIN belongto AS b ON (s.groupName = b.groupName AND s.groupOwner = b.groupOwner)
+WHERE b.username = "TestUser"
+ORDER BY postingDate DESC'''

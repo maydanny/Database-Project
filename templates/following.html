@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<h1>Following Friends</h1>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<table>
+	<th>Friend's Username</th>
+
+{% for line in user_list %}
+	<tr>
+		<td>{{line.followerUsername}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<a href="/home">Go back</a>
+
+</body>
+
+
+</html>

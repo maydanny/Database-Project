@@ -1,0 +1,36 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<h1>Joined Groups</h1>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+</style>
+
+<form action="/show_group" method="GET">
+
+<table>
+	<th>Group Name</th>
+	<th>Group Owner</th>
+
+{% for line in group_list %}
+	<tr>
+		<td>{{line.groupName}}</td>
+		<td>{{line.groupOwner}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+</form>
+
+<a href="/home">Go back</a>
+
+
+</body>
+
+
+</html>
