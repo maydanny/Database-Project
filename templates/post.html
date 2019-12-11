@@ -3,23 +3,33 @@
         <title>Image Upload</title>
     </head>
     <body>
-    	<form action="/postAuth" method="post">
-        <h1>Upload an Image!</h1>
+    	<form action="/postAuth" method="POST" enctype="multipart/form-data">
+        <h1>Share your day!</h1>
         <div>
-            <input type="text" name = "filePath" placeholder="URL" value="C:\Users\15512\Documents" required/> 
+            <input type="file" name = "imageToUpload" accept = "image/*" required/> 
         	</br>
-                <input type="radio" name="allFollowers" value="1"> Visible to all followers
-                <br/>
-                <input type="radio" name="allFollowers" value="0"> Visible to group members only
-                <br/>
-                Caption: <input type="text" name="caption">
-                <br/>
-                <input type="submit" value="Upload">
-            </form>
+            <input type="radio" name="allFollowers" value="1"> Visible to all followers
+            <br/>
+            <input type="radio" name="allFollowers" value="0"> Visible to group members only
+        
+			<form action="/action_page.php">
+                <select groupName = 'groupName' name = 'groupName'>
+					{% for line in group %}
+					<option value='{{line.groupName}}'>{{line.groupName}} </option>
+					{% endfor %}
+                </select>
+			</form>
+			<br>
+            <br/>
+            Caption: <input type="text" name="caption">
+            <br/>
+            <input type="submit" value=Post>
+        </form>
         </div>
+    
         {% if message %}
-            {{ message }}
-        {% endif %}
+        	{{message}}
+        {%endif%}
         <br/>
         <a href="/home">Go back</a>
     </body>

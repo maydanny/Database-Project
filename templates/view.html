@@ -1,6 +1,16 @@
 <html>
 <head>
 </head>
+<strong>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+</strong>
+
 <body>
 <form action="/post" method="POST">
 	<h1>{{username}}'s Finstagram</h1> 
@@ -14,17 +24,65 @@
 
 Shared & Following
 <table>
+	<th>Photo</th>
 	<th>PhotoID</th>
+	<th>Name</th>
 	<th>Poster</th>
 	<th>Posting Date</th>
 	<th>caption</th>
-
+	<th>Tagged Users</th>
+	<th>Liked & Rating</th>
+	<!-- <th>Liked</th>
+	<th>Comment</th> -->
+<!-- {%for line2 in posts2%}
+		<td>{{line2.firstName}} {{line2.lastName}}</td>
+		{%endfor%} -->
 {% for line in posts %}
 	<tr>
-		<td>{{line.ID}}</td>
+		<td><img src="/static/{{line.filePath}}" height = "200" width="300"/></td>
+		<th>{{line.ID}}</th>
+		<td>{{line.firstName}} {{line.lastName}}</td>
 		<td>{{line.photoOwner}}</td>
 		<td>{{line.postingDate}}</td>
 		<td>{{line.caption}}</td>
+		<td>{% for tag in tagposts %}
+			{%if line.ID ==tag.ID %}
+				{{tag.username}}<br>
+			{%endif%}
+			{%endfor%}
+		</td>
+		<td>
+				<table>
+					<th>username</th>
+					<th>rating</th>
+					{% for like in likepost %}
+					{%if line.ID ==like.ID %}
+					<tr>
+						<td> {{like.username}}</td>
+						<td>{{like.rating}}</td>
+					</tr>
+					{%endif%}
+					{%endfor%}
+				</table>
+		</td>
+				
+		<!-- <form action="/liked" method = "POST">
+		<td>
+			{% for like in likepost %}
+            {% if line.ID == like.ID %}
+           		{{like.username}}  {{like.rating}}
+
+        	
+        	<input type="number" name = 'rating' min = '1' max= '100' step='5' placeholder= 'Rate this pic!' required/></input>
+        	<button type="submit" name = 'ID' value = {{like.ID}}> Like</button>
+        	
+        	{% endif %}
+        	{%endfor%}
+        </td>
+        </form> -->
+        <!-- <td>
+        </td> -->
+
 	</tr>
 {% endfor %}
 </table>

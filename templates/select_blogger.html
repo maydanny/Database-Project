@@ -1,5 +1,6 @@
 <html>
 <head>
+	<h1>Finstagram</h1>
 </head>
 <body>
 
@@ -11,7 +12,7 @@ Whose post would you like to see?
 
 
 {% for line in user_list %}
-<input type="radio" name="photoOwner" value={{line.username}}>{{line.firstName}} {{line.lastName}}  ({{line.username}})
+<input type="radio" name="photoOwner" value={{line.username}} required>{{line.firstName}} {{line.lastName}}  ({{line.username}})
 </input>
 	<br>
 {% endfor %}

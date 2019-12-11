@@ -1,0 +1,69 @@
+<html>
+<head>
+<h1> Finstagram</h1>
+</head>
+<body>
+<style>
+table, th{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+</style>
+<form action="/manageFollow" method = "POST">
+	Follow Requests:
+<table>
+	<table>
+		<th>Username</th>
+		<tr>
+		<td>
+		{% for line in dataFollow %}
+		<input type="radio" name="followerUsername" value={{line.followerUsername}} required/> {{line.followerUsername}}</input>
+		{%endfor%}
+		</td>
+		</tr>
+	</table>
+
+	<table style="float: left">
+
+		<th>Accept Decline</th>
+	<tr>
+		<td>
+		<button type="submit" name = 'choice' value = "1" > Accept</button>
+		<button type="submit" name = 'choice' value = "0" > Decline</button></td>
+	</tr>
+	</table>
+	<br><br>
+</form>
+<table>
+
+<br>
+
+<form action="/manageTag" method = "POST">
+	Tag Requests:
+	<table>
+		<th>PhotoID</th>
+		<th>Photo</th>
+		<th>Tagger</th>
+		{% for line in dataTag %}
+	<tr>
+		<td>
+		<input type="radio" name="ID" value={{line.ID}} required/> {{line.ID}}</input></td>
+		<td><img src="/static/{{line.filePath}}" height = "100" width="150"/></td>
+		<td>{{line.photoOwner}}</td>
+	</tr>
+	{% endfor %}
+	<table>
+		<th>Accept Decline</th>
+	<tr>
+		<td>
+		<button type="submit" name = 'choice' value = "1" > Accept</button>
+		<button type="submit" name = 'choice' value = "0" > Decline</button></td>
+	</tr>
+	</table>
+</form>
+
+<a href="/home"> Go Back </a>
+
+</body>
+</html>

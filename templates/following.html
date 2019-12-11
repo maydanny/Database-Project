@@ -4,25 +4,54 @@
 <body>
 
 
-<h1>Following Friends</h1>
+<h1>Follwing & Followers</h1>
 <style type="text/css">
 	table, th, td{
 		border: 1px solid black;
 	}
 </style>
 <table>
-	<th>Friend's Username</th>
+	<th>Following</th>
 
-{% for line in user_list %}
+	{% for line in user_list %}
 	<tr>
-		<td>{{line.followerUsername}}</td>
+		<td>
+		{{line.followingUsername}}
+		</td>
 	</tr>
-{% endfor %}
+	{% endfor %}
+</table>
+<br>
+
+<table>
+	<th>Pending</th>
+	{% for line2 in user_list2 %}
+	<tr>
+		<td>
+		{{line2.followingUsername}}
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+<br>
+<table>
+	<th>Followers</th>
+	{% for line3 in user_list3 %}
+	<tr>
+		<td>
+		{{line3.followerUsername}}
+		</td>
+	</tr>
+	{% endfor %}
 </table>
 
-<a href="/home">Go back</a>
 
+<a href="/home">Go back</a>
 </body>
+<!-- 
+style="float: left" -->
+
+
 
 
 </html>

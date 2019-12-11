@@ -1,38 +1,75 @@
 <html>
 <head>
+	<h1>Finstagram</h1>
 </head>
+<strong>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+</strong>
+<br>
 <body>
 
-<form action="/show_postsAuth" method="POST">
+
+Here are posts by {{username}}:
+
+
+<form action="/followingAuth" method="POST">
+        <button type="submit" name = "photoOwner" value = {{username}}>Follow</button>
+</form>
+
+<form action="/show_posts" method="POST">
 <style type="text/css">
 	table, th, td{
 		border: 1px solid black;
 	}
 </style>
-
-Here are posts by {{poster_name}}:
-
 <table>
+	<th>Photo</th>
 	<th>PhotoID</th>
+	<th>Name</th>
 	<th>Poster</th>
 	<th>Posting Date</th>
 	<th>caption</th>
+	<th>Tagged Users</th>
+	<th>Liked & Rating</th>
 
 {% for line in posts %}
 	<tr>
+		<td><img src="/static/{{line.filePath}}" height = "200" width="300"/></td>
 		<td>{{line.ID}}</td>
+		<td>{{line.firstName}} {{line.lastName}}</td>
 		<td>{{line.photoOwner}}</td>
 		<td>{{line.postingDate}}</td>
 		<td>{{line.caption}}</td>
+		<td>{% for tag in tags %}
+			{%if line.ID ==tag.ID %}
+				{{tag.username}}<br>
+			{%endif%}
+			{%endfor%}
+		</td>
+		<td>
+			<table>
+				<th>username</th>
+				<th>rating</th>
+				{% for like in likepost %}
+				{%if line.ID ==like.ID %}
+				<tr>
+					<td> {{like.username}}</td>
+					<td>{{like.rating}}</td>
+				</tr>
+				{%endif%}
+				{%endfor%}
+			</table>
+		</td>	
 	</tr>
 {% endfor %}
 </table>
-	
-	{% if error %}
-		<p class="error"><strong>Error:</strong> {{error}}</p>
-	{% endif %}
-<form>
-
+</form>
 
 <br>
 <br>
@@ -43,6 +80,4 @@ Here are posts by {{poster_name}}:
 <a href="/logout">Logout</a>
 
 </body>
-
-
 </html>
