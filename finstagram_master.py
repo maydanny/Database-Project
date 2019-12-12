@@ -239,8 +239,8 @@ def postAuth():
          cursor.execute(query, (photoOwner, time.strftime('%Y-%m-%d %H:%M:%S'), image_name, allFollowers, caption))
 
          if (allFollowers=='1'):
-             message = 'Image has been successfully uploaded.'
-                          return render_template("post.html", message=message)
+             flash('Image has been successfully uploaded')
+             return redirect (url_for('post'))
          else:
              groupName = request.form['groupName']
              query0='SELECT groupOwner FROM friendgroups WHERE groupName = %s'
@@ -258,12 +258,12 @@ def postAuth():
                  value = int(photoID['ID'])
                  query2 = 'INSERT INTO sharewith (ID, groupName, groupOwner) VALUES(%s, %s, %s)'
                  cursor.execute(query2, (value, groupName, groupOwner))
-                 message = 'Image has been successfully uploaded.'
                  cursor.close()
-                 return render_template("post.html", message=message)
+                 flash('Image has been successfully uploaded')
+                 return redirect (url_for('post'))
              else:
-                 message = 'You are not in that friend group'
-                 return render_template("post.html", message=message)
+                 flash('You are not in that friend group')
+                 return redirect (url_for('post'))
 
 #to send a tag request to the user who can see the logged-in user's images
 @app.route('/tagAuth', methods = ["GET", "POST"])
@@ -279,9 +279,11 @@ def tagAuth():
     query2 = 'SELECT * FROM tagged WHERE username =%s AND ID = %s AND tagStatus =1'
     cursor.execute (query2, (taggedUser, ID))
     duplicate = cursor.fetchone()
-    query3 = '''SELECT * FROM follow WHERE followerUsername = %s AND
-    followingUsername = %s AND followStatus =1'''
-    cursor.execute (query3, (taggedUser, username))
+    query3 = '''SELECT followerUsername AS username FROM follow WHERE followerUsername = %s AND
+    followingUsername = %s AND followStatus =1
+    UNION SELECT username FROM belongto AS b JOIN sharewith AS s ON (b.groupName = s.groupName)
+    JOIN photo AS p ON (s.ID = p.ID)  WHERE username= %s AND p.ID = %s'''
+    cursor.execute (query3, (taggedUser, username, taggedUser, ID))
     visible = cursor.fetchone() 
     if (duplicate):
         flash('You already tagged the user')

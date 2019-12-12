@@ -2,15 +2,24 @@
     <head>
         <title>Image Upload</title>
     </head>
+    {% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+</strong>
+<br>
     <body>
     	<form action="/postAuth" method="POST" enctype="multipart/form-data">
         <h1>Share your day!</h1>
         <div>
             <input type="file" name = "imageToUpload" accept = "image/*" required/> 
         	</br>
-            <input type="radio" name="allFollowers" value="1"> Visible to all followers
+            <input type="radio" name="allFollowers" value="1"required/> Visible to all followers
             <br/>
-            <input type="radio" name="allFollowers" value="0"> Visible to group members only
+            <input type="radio" name="allFollowers" value="0"required/> Visible to group members only
         
 			<form action="/action_page.php">
                 <select groupName = 'groupName' name = 'groupName'>
@@ -26,10 +35,7 @@
             <input type="submit" value=Post>
         </form>
         </div>
-    
-        {% if message %}
-        	{{message}}
-        {%endif%}
+        
         <br/>
         <a href="/home">Go back</a>
     </body>
