@@ -22,7 +22,9 @@ Instagram Website, a web application for sharing photos. It gives users more pri
 **Like and Comment on Photos:** Users can like and leave comments on individual's posts who they follow
 
 # Instructions to run:
+```
 python3 app.py
 
 Notes: 
 1) Be sure that the port used by your MySQL server is the same as the one configured in app.py
+```
