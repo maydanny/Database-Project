@@ -21,6 +21,30 @@ Instagram Website, a web application for sharing photos. It gives users more pri
 
 **Like and Comment on Photos:** Users can like and leave comments on individual's posts who they follow
 
+## Prerequisite
+
+* Python
+* Flask
+
+### Install Flask
+
+* pip install flask
+* pip install pymysql (used to connect to database)
+
+
+### If You Don't Have pip
+
+* https://pypi.python.org/pypi/pip
+Run: python get-pip.py
+
+
+### More Information
+
+http://flask.pocoo.org/
+
+
+### run on localhost:5000
+
 # Instructions to run:
 ```
 python3 finstagram_master.py
