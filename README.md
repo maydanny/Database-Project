@@ -21,7 +21,7 @@ Instagram Website, a web application for sharing photos. It gives users more pri
 
 **Like and Comment on Photos:** Users can like and leave comments on individual's posts who they follow
 
-## Prerequisite
+# Prerequisite
 
 * Python
 * Flask
