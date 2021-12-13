@@ -34,7 +34,7 @@ Instagram Website, a web application for sharing photos. It gives users more pri
 
 ### If You Don't Have pip
 
-* https://pypi.python.org/pypi/pip
+https://pypi.python.org/pypi/pip
 Run: python get-pip.py
 
 
