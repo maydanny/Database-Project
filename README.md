@@ -23,8 +23,8 @@ Instagram Website, a web application for sharing photos. It gives users more pri
 
 # Instructions to run:
 ```
-python3 app.py
+python3 finstagram_master.py
 
 Notes: 
-1) Be sure that the port used by your MySQL server is the same as the one configured in app.py
+1) Be sure that the port used by your MySQL server is the same as the one configured in finstagram_master.py
 ```
