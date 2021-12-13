@@ -1,5 +1,5 @@
 # Database-Project
-Using mysql,python,flask and html to simulate a simple photo sharing website
+Using MySql,Python,Flas, HTML and CSS to simulate a simple photo sharing website
 
 # Introduction
 Instagram Website, a web application for sharing photos. It gives users more privacy than many photo sharing sites by giving them more detailed control over who can see which photos they post. The focus of the project will be on storing data about who posted which photos and who has permission to view them, tag others in them, see who’s tagged in what, etc.
@@ -20,3 +20,9 @@ Instagram Website, a web application for sharing photos. It gives users more pri
 **Add friend:** User selects an existing CloseFriendGroup that they own and provides username of someone she’d like to add to the group. Finstagram checks whether there is exactly one person with that name and updates the Belong table to indicate that the selected person is now in the CloseFriendGroup.
 
 **Like and Comment on Photos:** Users can like and leave comments on individual's posts who they follow
+
+# Instructions to run:
+python3 app.py
+
+Notes: 
+1) Be sure that the port used by your MySQL server is the same as the one configured in app.py
